@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 연습</title>
+</head>
+
+<body>
+    <h1>내 사이트</h1>
+    <p></p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $.ajax({
+            method: "GET",
+            url: "https://api.odcloud.kr/api/15073015/v1/uddi:24026591-4782-42da-9c86-f03407320b1e?page=1&perPage=10&serviceKey=JpP9L0INrCGAIYDxFGCFWj7HKPHFNH4bfJfXze7rjKdIyUMo4JefuRYd4qVJZXUSN9EyhV1X5fy6RzP3KDV4Aw%3D%3D",
+            data: {},
+            Headers: { accept: "application/json" }
+
+            /*success: function(response){
+                let datas = reponse[""]["data"];
+                for(let i = 0; i<data.length;i++){
+                    let geumri = datas[i]["기준금리"]
+                    let date = datas[i]["기준일자"]
+                }   
+
+            }*/
+        })
+
+            .done(function (msg) {
+                console.log(msg);
+                //console.log(msg.data[0].기준금리);
+                //console.log(msg.data[0].기준일자);
+
+                $("p").append("기준금리: " + "<strong>" + msg.data[0].기준금리 + "\n</strong>");
+                $("p").append("기준일자: " + "<strong>" + msg.data[0].기준일자 + "</strong>");
+
+                /*for(let i = 0; i<10;i++){
+                    $("p").append("기준금리: " + "<strong>" + msg.data[i].기준금리 + "\n</strong>");
+                }*/
+                
+            });</script>
+</body>
+
+</html>
